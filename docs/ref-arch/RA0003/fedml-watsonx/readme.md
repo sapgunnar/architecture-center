@@ -1,9 +1,7 @@
 ---
-id: id-ra0003-6
-slug: /ref-arch/8e1a5fbce3/6
+id: 2ce40f
+slug: /ref-arch/2ce40f
 sidebar_position: 1
-sidebar_custom_props:
-  category_index: []
 title: FedML and IBM watsonx.ai / IBM Watson Studio integration
 description: >-
   Accelerate ML workflows with IBM watsonx and FedML, integrating SAP's business
@@ -19,6 +17,7 @@ keywords:
 sidebar_label: FedML-IBM watsonx
 image: img/ac-soc-med.png
 tags:
+  - ibm
   - data
 hide_table_of_contents: false
 hide_title: false
@@ -38,6 +37,12 @@ last_update:
   author: s-krishnamoorthy
   date: 2025-01-23
 ---
+
+:::note Joint Reference Architecture
+
+**This content was developed in collaboration with IBM.**
+
+:::
 
 FedML (fedml-dsp) can be used in notebooks inside the IBM watsonx.ai and Waston Studio environments. 
 

@@ -1,64 +1,79 @@
-import React, { JSX } from 'react';
-import Link from '@docusaurus/Link';
-import { Button } from '@ui5/webcomponents-react';
-import '@ui5/webcomponents-icons/dist/AllIcons';
+import React, { JSX, useRef, useEffect, useState } from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { useColorMode } from '@docusaurus/theme-common';
+import Link from '@docusaurus/Link';
+import '@ui5/webcomponents-icons/dist/AllIcons';
+import styles from './HeroSection.module.css';
+import { logger } from '@site/src/utils/logger';
+
+declare global {
+    interface Window {
+        particlesJS: (id: string, config: object) => void;
+    }
+}
 
 export default function HeroSection(): JSX.Element {
-    const { colorMode } = useColorMode();
-    const getImg = (name: string) => useBaseUrl(`/img/landingPage/${name}`);
+    const particlesConfigUrl = useBaseUrl('/particlesjs-config.json');
+    const particlesInitialized = useRef(false);
+    const [displayedText, setDisplayedText] = useState('');
+    const [typingDone, setTypingDone] = useState(false);
+    const fullText = 'SAP Architecture Center';
 
-    // Responsive srcSets for light and dark, now using .webp for compression
-    const lightSrcSet = [
-        getImg('architecture_center_banner5_rounded_700x206_light.webp') + ' 700w',
-        getImg('architecture_center_banner5_rounded_1200x353_light.webp') + ' 1200w',
-        getImg('architecture_center_banner5_rounded_1440x424_light.webp') + ' 1440w',
-    ].join(', ');
+    // Typewriter effect
+    useEffect(() => {
+        let index = 0;
+        const interval = setInterval(() => {
+            index++;
+            setDisplayedText(fullText.slice(0, index));
+            if (index >= fullText.length) {
+                clearInterval(interval);
+                setTypingDone(true);
+            }
+        }, 70);
+        return () => clearInterval(interval);
+    }, []);
 
-    const darkSrcSet = [
-        getImg('architecture_center_banner5_rounded_700x206_dark.webp') + ' 700w',
-        getImg('architecture_center_banner5_rounded_1200x353_dark.webp') + ' 1200w',
-        getImg('architecture_center_banner5_rounded_1440x424_dark.webp') + ' 1440w',
-    ].join(', ');
+    // Initialize particles.js
+    useEffect(() => {
+        if (particlesInitialized.current) return;
 
-    const srcSet = colorMode === 'dark' ? darkSrcSet : lightSrcSet;
-    const fallbackSrc =
-        colorMode === 'dark'
-            ? getImg('architecture_center_banner5_rounded_1440x424_dark.webp')
-            : getImg('architecture_center_banner5_rounded_1440x424_light.webp');
+        const loadParticles = async () => {
+            // Dynamically import particles.js (client-side only)
+            await import('particles.js');
+
+            // Fetch config and initialize
+            const response = await fetch(particlesConfigUrl);
+            const config = await response.json();
+            window.particlesJS('particles-js', config);
+            particlesInitialized.current = true;
+        };
+
+        loadParticles().catch((error) => {
+            logger.error('Failed to load particles.js', error);
+        });
+    }, [particlesConfigUrl]);
 
     return (
-        <section>
-            <div className="hero_banner">
-                <img
-                    src={fallbackSrc}
-                    srcSet={srcSet}
-                    sizes="(max-width: 600px) 350px, (max-width: 1200px) 700px, 1440px"
-                    width={1440}
-                    height={424}
-                    alt="SAP Architecture Center Banner"
-                    loading="eager"
-                    fetchPriority="high"
-                />
-                <div className="hero_banner__overlay">
-                    <div className="welcome">
-                        <h1 className="header_title">
-                            <b className="header_text">SAP Architecture Center</b>
-                        </h1>
-                        <div className="header_body">
-                            <p className="header_body_p">
-                                The SAP Architecture Center offers a place that provides solution reference
-                                architectures, helping businesses adopt SAP solutions to turn data into valuable
-                                business insights.
-                            </p>
-                        </div>
-                        <Link to="/docs/exploreallrefarch">
-                            <Button className="standard-button-width">Explore Now</Button>
+        <div className={styles.heroWrapper}>
+            <div id="particles-js" className={styles.particlesContainer}></div>
+            <div className={styles.heroContainer}>
+                <div className={styles.heroContent}>
+                    <h1 className={styles.heroTitle}>
+                        {displayedText}
+                        {!typingDone && <span className={styles.cursor}>|</span>}
+                    </h1>
+                    <p className={styles.heroSubtitle}>
+                        Empowering architects and developers to design, integrate, and optimize SAP Solutions through best practices, reference architectures, and community-driven guidance.
+                    </p>
+                    <div className={styles.heroActions}>
+                        <Link to="/docs/ref-arch" className={styles.primaryButton}>
+                            Browse Architectures
+                        </Link>
+                        <Link to="/docs/community/intro" className={styles.secondaryButton}>
+                            Community of Practice
                         </Link>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }

@@ -1,10 +1,7 @@
 ---
-id: id-ra0020
-slug: /ref-arch/61f6a1db63
-sidebar_position: 20
-sidebar_custom_props:
-  category_index:
-    - integration
+id: e9b7df
+slug: /ref-arch/e9b7df
+sidebar_position: 210
 title: Business to Business Integration
 description: >-
   Optimize B2B integration with SAP Integration Suite for secure, scalable

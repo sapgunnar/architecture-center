@@ -1,9 +1,7 @@
 ---
-id: id-ra0019-3
-slug: /ref-arch/20c6b29b1e/3
+id: '206025'
+slug: /ref-arch/206025
 sidebar_position: 3
-sidebar_custom_props:
-  category_index: []
 title: Authorization with SAP Cloud Identity Services
 description: >-
   Centralize identity lifecycle management with SAP Cloud Identity Services for
@@ -18,7 +16,6 @@ sidebar_label: Authorization Design
 image: img/ac-soc-med.png
 tags:
   - security
-  - genai
 hide_table_of_contents: false
 hide_title: false
 toc_min_heading_level: 2

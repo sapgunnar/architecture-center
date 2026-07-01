@@ -1,13 +1,7 @@
 ---
-id: id-ra0009
-slug: /ref-arch/0245473a99
-sidebar_position: 9
-sidebar_custom_props:
-  category_index:
-    - aws
-    - azure
-    - gcp
-    - appdev
+id: c1e07f
+slug: /ref-arch/c1e07f
+sidebar_position: 100
 title: Establish a central inbox with SAP Task Center
 description: >-
   Learn to set up SAP Task Center on SAP BTP. Explore its architecture,

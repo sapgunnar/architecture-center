@@ -1,9 +1,7 @@
 ---
-id: id-ra0019-1
-slug: /ref-arch/20c6b29b1e/1
+id: 3ec73b
+slug: /ref-arch/3ec73b
 sidebar_position: 1
-sidebar_custom_props:
-  category_index: []
 title: Authentication with SAP Cloud Identity Services
 description: >-
   This reference architecture describes the authentication flows for SAP SaaS
@@ -18,7 +16,6 @@ sidebar_label: Authentication and Single Sign On
 image: img/ac-soc-med.png
 tags:
   - security
-  - genai
 hide_table_of_contents: false
 hide_title: false
 toc_min_heading_level: 2

@@ -1,9 +1,7 @@
 ---
-id: id-ra0003-5
-slug: /ref-arch/8e1a5fbce3/5
+id: d5d3ce
+slug: /ref-arch/d5d3ce
 sidebar_position: 1
-sidebar_custom_props:
-  category_index: []
 title: FedML's support for NVIDIA GPUs
 description: >-
   FedML now supports reading of federated SAP business data via SAP Datasphere
@@ -17,6 +15,7 @@ keywords:
 sidebar_label: FedML-NVIDIA
 image: img/ac-soc-med.png
 tags:
+  - nvidia
   - data
 hide_table_of_contents: false
 hide_title: false
@@ -36,6 +35,12 @@ last_update:
   author: s-krishnamoorthy
   date: 2025-01-23
 ---
+
+:::note Joint Reference Architecture
+
+**This content was developed in collaboration with NVIDIA.**
+
+:::
 
 FedML (fedml-dsp) can be used in notebooks with GPU compute. FedML now has support for NVIDIA RAPIDS™ and CUDA cuDF and cuML and detection of GPU for adding support for RAPIDS™ CUDA. 
 

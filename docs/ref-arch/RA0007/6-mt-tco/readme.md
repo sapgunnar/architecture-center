@@ -1,11 +1,11 @@
 ---
-id: id-ra0007-5
-slug: /ref-arch/d31bedf420/5
+id: 0124a3
+slug: /ref-arch/0124a3
 sidebar_position: 1
-sidebar_custom_props:
-  category_index: []
 title: Cost of Ownership
-description: Explore strategies to optimize the total cost of ownership for multitenant SAP applications, covering platform, maintenance, and resource allocation costs.
+description: >-
+  Explore strategies to optimize the total cost of ownership for multitenant SAP
+  applications, covering platform, maintenance, and resource allocation costs.
 keywords:
   - sap
   - tenant lifecycle
@@ -17,7 +17,7 @@ image: img/ac-soc-med.png
 tags:
   - appdev
   - cap
-  - genai
+  - security
 hide_table_of_contents: false
 hide_title: false
 toc_min_heading_level: 2

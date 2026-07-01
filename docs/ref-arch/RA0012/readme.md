@@ -1,13 +1,7 @@
 ---
-id: id-ra0012
-slug: /ref-arch/d9b25daf96
-sidebar_position: 12
-sidebar_custom_props:
-  category_index:
-    - aws
-    - gcp
-    - azure
-    - data
+id: 8aceea
+slug: /ref-arch/8aceea
+sidebar_position: 130
 title: Medallion Reference Architecture for Big Data Processing in SAP HANA Cloud
 description: >-
   Process big data with SAP HANA Cloud Data Lake, integrating structured and

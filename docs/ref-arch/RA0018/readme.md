@@ -1,10 +1,7 @@
 ---
-id: id-ra0018
-slug: /ref-arch/99fd0564be
-sidebar_position: 18
-sidebar_custom_props:
-  category_index:
-    - appdev
+id: b86487
+slug: /ref-arch/b86487
+sidebar_position: 190
 title: Integrate and Extend with SAP Build Process Automation
 description: >-
   Automate processes with SAP Build Process Automation, integrating workflows
@@ -22,6 +19,7 @@ tags:
   - azure
   - aws
   - gcp
+  - appdev
 hide_table_of_contents: false
 hide_title: false
 toc_min_heading_level: 2

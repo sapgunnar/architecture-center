@@ -1,10 +1,7 @@
 ---
-id: id-ra0007
-slug: /ref-arch/d31bedf420
-sidebar_position: 7
-sidebar_custom_props:
-  category_index:
-    - appdev
+id: 5942d2
+slug: /ref-arch/5942d2
+sidebar_position: 80
 title: Multitenant SaaS Application using CAP
 description: >-
   Develop scalable multitenant SaaS applications on SAP BTP using CAP for
@@ -20,7 +17,6 @@ image: img/ac-soc-med.png
 tags:
   - appdev
   - cap
-  - genai
 hide_table_of_contents: false
 hide_title: false
 toc_min_heading_level: 2

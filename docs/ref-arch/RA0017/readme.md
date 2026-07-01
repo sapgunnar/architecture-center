@@ -1,10 +1,7 @@
 ---
-id: id-ra0017
-slug: /ref-arch/7adaecbbaf
-sidebar_position: 17
-sidebar_custom_props:
-  category_index:
-    - integration
+id: ffc84b
+slug: /ref-arch/ffc84b
+sidebar_position: 180
 title: Connect Business Processes with SAP Master Data Integration
 description: >-
   Synchronize and manage business-critical data across SAP and third-party

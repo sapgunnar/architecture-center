@@ -1,9 +1,7 @@
 ---
-id: id-ra0005-4
-slug: /ref-arch/e5eb3b9b1d/4
-sidebar_position: 1
-sidebar_custom_props:
-  category_index: []
+id: d0e5c7
+slug: /ref-arch/d0e5c7
+sidebar_position: 4
 title: Conversational AI & Joule
 description: Please add a description (max 300 characters)
 keywords:
@@ -14,7 +12,11 @@ keywords:
 sidebar_label: Conversational AI & Joule
 image: img/ac-soc-med.png
 tags:
-  - ref-arch
+  - genai
+  - agents
+  - aws
+  - azure
+  - gcp
 hide_table_of_contents: false
 hide_title: false
 toc_min_heading_level: 2

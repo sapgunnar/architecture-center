@@ -1,10 +1,7 @@
 ---
-id: id-ra0015
-slug: /ref-arch/c5f6fe6cf1
-sidebar_position: 15
-sidebar_custom_props:
-  category_index:
-    - integration
+id: b3c3ac
+slug: /ref-arch/b3c3ac
+sidebar_position: 160
 title: Business to Government Integration
 description: >-
   Streamline compliance with SAP's Business-to-Government Integration for secure

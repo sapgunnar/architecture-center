@@ -34,11 +34,12 @@ export default function ShareSite() {
                     height: MAIL_ICON_SIZE,
                 }}
             >
-                <Icon style={{ width: MAIL_ICON_SIZE, height: MAIL_ICON_SIZE, color: '#0070F2' }} name="paper-plane" />
+                <Icon style={{ width: MAIL_ICON_SIZE, height: MAIL_ICON_SIZE, color: 'var(--ifm-link-color)' }} name="paper-plane" />
             </a>
             <a
                 href={LINKEDIN_SHARE_URL + encodeURIComponent(url)}
                 target="_blank"
+                rel="noopener noreferrer"
                 role="button"
                 title="Share on LinkedIn"
                 style={{

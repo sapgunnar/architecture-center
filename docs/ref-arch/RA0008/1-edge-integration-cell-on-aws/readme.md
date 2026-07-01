@@ -1,9 +1,7 @@
 ---
-id: id-ra0008-1
-slug: /ref-arch/263f576c90/1
+id: cd0961
+slug: /ref-arch/cd0961
 sidebar_position: 1
-sidebar_custom_props:
-  category_index: []
 title: Edge Integration Cell on AWS
 description: >-
   Deploy SAP Integration Suite - Edge Integration Cell on AWS for secure hybrid
@@ -18,6 +16,8 @@ image: img/ac-soc-med.png
 tags:
   - aws
   - eic
+  - integration
+  - appdev
 hide_table_of_contents: false
 hide_title: false
 toc_min_heading_level: 2
