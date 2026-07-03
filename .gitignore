@@ -34,8 +34,7 @@ src/constant/pageMapping.ts
 # Local-only files
 metrics/
 
-.claude/settings.json
-.claude/settings.local.json
+.claude/
 CLAUDE.local.md
 
 build-cernus76
