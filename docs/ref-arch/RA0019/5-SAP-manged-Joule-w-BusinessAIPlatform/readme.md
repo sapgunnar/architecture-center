@@ -44,14 +44,14 @@ contributors:
 discussion: 
 last_update:
   author: NormanNuernberger
-  date: 2025-07-03
+  date: 2025-07-08
 ---
 
-Setting up unified SAP Joule in an existing SAP landscape requires an integration into SAP Cloud Identity Services. SAP Joule and SAP Cloud Identity services are provided in two stages (Test and Production), while many other SAP systems in a typical landscape exist in more than 2 stages, such as Sandbox, Development, Test, Pre-Prod and Production. Identities such landscapes are treated as productive on non-productive systems. For example, a developer on a development system is a productive developer. To support such scenarios, as well as a strict SaaS approach, SAP is providing two different architectural diagrams for landscape recommendations - one for a two-staged landscape (SaaS) and one for an n-staged landscape.
+Setting up Joule WORK in an existing SAP landscape requires an integration into SAP Cloud Identity Services. SAP Joule and SAP Cloud Identity services are provided in two stages (Test and Production), while many other SAP systems in a typical landscape exist in more than 2 stages, such as Sandbox, Development, Test, Pre-Prod and Production. Identities in such landscapes with more than 2 stages are typically treated as productive also on non-productive systems. For example, a developer on a development system is a productive developer. To support such scenarios, as well as a strict SaaS approach (two-staged), SAP is providing two different architectural diagrams for landscape recommendations - one for a two-staged landscape (SaaS) and one for an n-staged landscape.
 
 # Two-Staged Landscape Architecture
 
-The architecture diagram depicts the recommended SAP Joule setup for a 2-staged Joule landscape, illustrating how the various components are organized across Test, and Production stages.
+The architecture diagram depicts the recommended SAP Joule setup for a two-staged Joule landscape, illustrating how the various components are organized across Test, and Production stages.
 
 ![drawio](drawio/2_staged_BAIP_IAM_Architecture.drawio)
 
@@ -59,18 +59,14 @@ The solution architecture consists of the following key elements:
 
 - **Two staged environments** (Test and Production): Each stage is represented as a horizontal row in the diagram, containing its own instance of SAP Cloud Identity Services, the SAP Business AI Platform and the connected SAP systems of the same stage. This separation ensures that changes can be developed and validated before affecting production workloads.
 
-- **SAP Business AI Platform**: The following services are hosted, SAP-managed, by the *SAP Business AI Platform*, separated by stage:
-  - **SAP Joule Work**: SAP’s digital assistant layer that brings conversational and generative AI into SAP applications and workflows.
+- **SAP Cloud Identity Services**: Test and Productive tenants of SAP Cloud Identity Services manage user authentication and authorization. The Test tenant serves the Test stage, while the Productive tenant serves the Production stage. Both integrate with the respective Corporate Identity Provider (Pre-Prod or Prod) for enterprise single sign-on.
+
+- **SAP Business AI Platform**: SAP Business AI Platform is an enterprise AI foundation that brings together AI, data, process context, and governance, so organizations can build, deploy, integrate, manage and scale AI capabilities into business processes and applications.
+The following services are hosted, SAP-managed, by the *SAP Business AI Platform*, separated by stage:
+  - **SAP Joule WORK**: SAP’s digital assistant layer that brings conversational and generative AI into SAP applications and workflows.
   - **SAP Joule Studio**: Low-code tooling to design, configure, and manage Joule-based experiences, including agents and skills.
   - **SAP Agentic Layer**: Runtime and integrated management platform for AI agents.
   - **SAP Knowledge Graph**: Connecting data with context to enable AI to utilize business information efficiently.
-
-
-- **SAP Cloud Identity Services**: Test and Productive tenants of SAP Cloud Identity Services manage user authentication and authorization. The Test tenant serves the Test stage, while the Productive tenant serves the Production stage. Both integrate with the respective Corporate Identity Provider (Pre-Prod or Prod) for enterprise single sign-on.
-
-- **SAP Business AI Platform**: SAP Business AI Platform is an enterprise AI foundation that brings together AI, data, process context, and governance, so organizations can build, integrate, scale, and run AI that delivers real business impact.
-It usually refers to a platform that helps organizations build, deploy, manage, and integrate AI capabilities into business processes and applications.
-### formulate
 
 - **SAP Cloud Solutions per stage**: Each stage connects to the corresponding instances of SAP cloud applications such as SAP S/4HANA Cloud, SAP SuccessFactors, and other Joule-enabled solultions. This ensures that Joule skills and configurations are tested against non-productive data before being deployed to production.
 
@@ -82,12 +78,13 @@ It usually refers to a platform that helps organizations build, deploy, manage, 
 
 ## Specialities
 
-- **Signavio**: There is no test signavio.
+- **Signavio**: Signavio does not provide test tenants. Signavio will only be integrated into the Production stage.
 
+- **Cloue Application Lifecycle Management (CALM)**: CALM does not provide test tenants. CALM will only be integrated into the Production stage.
 
 # N-staged Landscape Architecture
 
-The architecture diagram depicts the recommended SAP Joule setup for an n-staged Joule landscape, illustrating how the various components are organized across the stages. In this example a 3-staged landscape.
+The architecture diagram depicts the recommended SAP Joule setup for an n-staged Joule landscape, illustrating how the various components are organized across the stages. In this example a 3-staged landscape and a sandbox stage in addition.
 
 ![drawio](drawio/n_staged_BAIP_IAM_Architecture.drawio)
 
@@ -95,23 +92,20 @@ The solution architecture consists of the following key elements:
 
 - **Three staged environments** (Development, Test and Production): Each stage is represented as a horizontal row in the diagram. All stages are sharing the same instance of SAP Cloud Identity Services and the SAP Business AI Platform. The Test instances of SAP Cloud Identity Services and SAP Business AI Platform are connected to a separated Sandbox landscape. This separation ensures that changes can be developed and validated before affecting production workloads, while identities in non-productive systems can be managed like productive identities.
 
-- **SAP Business AI Platform**: The following services are hosted, SAP-managed, by the *SAP Business AI Platform*, separated by stage:
-  - **SAP Joule Work**: SAP’s digital assistant layer that brings conversational and generative AI into SAP applications and workflows.
+- **SAP Business AI Platform**: SAP Business AI Platform is an enterprise AI foundation that brings together AI, data, process context, and governance, so organizations can build, deploy, integrate, manage and scale AI capabilities into business processes and applications.
+The following services are hosted, SAP-managed, by the *SAP Business AI Platform*, separated by stage:
+  - **SAP Joule WORK**: SAP’s digital assistant layer that brings conversational and generative AI into SAP applications and workflows.
   - **SAP Joule Studio**: Low-code tooling to design, configure, and manage Joule-based experiences, including agents and skills.
   - **SAP Agentic Layer**: Runtime and integrated management platform for AI agents.
   - **SAP Knowledge Graph**: Connecting data with context to enable AI to utilize business information efficiently.
 
-
 - **SAP Cloud Identity Services**: Test and Productive tenants of SAP Cloud Identity Services manage user authentication and authorization. The Test tenant serves a dedicated Sandbox stage only, while the Productive tenant serves all the other stages. Both integrate with the respective Corporate Identity Provider (Pre-Prod or Prod) for enterprise single sign-on.
 
-- **SAP Business AI Platform**: SAP Business AI Platform is an enterprise AI foundation that brings together AI, data, process context, and governance, so organizations can build, integrate, scale, and run AI that delivers real business impact.
-
-## STOPPED HERE
 - **SAP Cloud Solutions per stage**: Each stage connects to the corresponding instances of SAP cloud applications such as SAP S/4HANA Cloud, SAP SuccessFactors, and other Joule-enabled solultions. This ensures that Joule skills and configurations are tested against non-productive data before being deployed to production.
 
 ## Characteristics
 
-- **Staged development lifecycle**: The two-staged model (Test and Production) provides a structured path for developing, validating, and deploying Joule skills, agents, and configurations. Changes are qualified in the Test stage before promotion to production, reducing the risk of disruptions to business operations.
+- **Staged development lifecycle**: The n-staged model provides a structured path for developing, validating, and deploying Joule skills, agents, and configurations. Changes are developed in the Development stage and qualified in the Test stage before promotion to production, reducing the risk of disruptions to business operations, while developers and test users are treated like productive users to mitigate the risk of interruptions in the development lifecycles.
 
 - **Centralized identity management**: SAP Cloud Identity Services tenants (Test and Productive) provide consistent authentication and authorization across all stages. Integration with Corporate Identity Providers ensures that enterprise security policies are enforced, while the test tenant enables safe validation of identity configurations before production deployment.
 
@@ -120,12 +114,6 @@ The solution architecture consists of the following key elements:
 - **SAP SuccessFactors**: SAP SuccessFactors is owning an own identifier for a person, the Person UID, required for Embedded Analytics. This UID has an independent lifecycle than the Global User UID, which is owned by the SAP Cloud Identity Services. Connecting multiple instances of SAP SuccessFactors with a single instance of SAP Cloud Identity Services may lead to conflicts when synchronizing the identities from SAP SuccessFactors to SAP Cloud Identity Services. There are different possibilities to avoid such conflicts:
     - By using different user accounts in different instances of SAP Success Factors, while authentication via Global User UID can allow single sign on even with different mail addresses in the different instances of SAP Success Factors.
     - By storing the different Person UIDs into different attributes inside SAP Cloud Identity Services, as described in [Note 2954815](https://me.sap.com/notes/2954815)
-Only one SFSF can act as source for business users in a landscape.
-### formulate
-
-- **Multi-application landscapes**: Organizations with multiple Joule-enabled SAP applications benefit from the unified Joule instance approach, where a single staged BTP setup serves as the foundation for Joule across SAP S/4HANA, SAP SuccessFactors, SAP Ariba, and other connected systems.
-
-- **Extended staging models**: The 3-staged model can be extended to 4 or more stages for organizations with additional quality gates, regulatory requirements, or geographic considerations that necessitate further separation of environments.
 
 ## Services and Components
 
