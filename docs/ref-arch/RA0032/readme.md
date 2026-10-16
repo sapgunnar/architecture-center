@@ -2,18 +2,20 @@
 id: a22904
 slug: /ref-arch/a22904
 sidebar_position: 160
-title: SAP Data Accelerator
-description: >-
-  SAP Data Accelerator (DA) is a cloud-native, SAP-managed service that provides
-  authorized external partners with governed, near-real-time access to SAP
-  on-premises and private cloud business data.
+title: "SAP Data Accelerator: Governed Partner Access to SAP Data"
+description: "SAP Data Accelerator is an SAP-managed service giving authorized partners governed, near-real-time access to SAP on-premises and private cloud business data."
 keywords:
   - sap
-  - data accelerator
+  - sap data accelerator
+  - sap cloud connector
+  - palantir foundry
+  - sap s/4hana
   - data integration
-  - analytics
-  - palantir
-  - data and analytics
+  - near-real-time data replication
+  - data governance
+  - writeback
+  - data analytics
+  - business ai platform
 sidebar_label: SAP Data Accelerator
 image: img/ac-soc-med.png
 tags:
@@ -39,23 +41,22 @@ SAP Data Accelerator (DA) is a cloud-native, SAP-managed service that provides a
 
 SAP Data Accelerator currently supports Palantir Foundry. Support for additional partner platforms may be introduced over time. 
 
-SAP Data Accelerator is currently implemented for Palantir with secure proxy, with more enhancements such as Direct Access & Storage planned for the future. 
 
 ![drawio](drawio/sap-data-accelerator.drawio)
 
 
 **Data flows:** 
 
-- **Acquisition (left → right):** SAP backend data is selected, authorized, and replicated to partner systems via SAP Data Accelerator APIs. 
+- **Acquisition (left → right):** Partner software authenticates to SAP Data Accelerator using mTLS and opens a secure tunnel to the SAP backend through SAP Cloud Connector. Over this tunnel, the SAP ABAP add-on extracts authorized SAP data and delivers it to the partner platform.
 
-- **Writeback (right → left):** Enriched or AI-generated insights can be written back to SAP from partner platforms, subject to authorization. 
+- **Writeback (right → left):** Over the same tunnel, the partner platform sends enriched or AI-generated insights back to SAP — the SAP ABAP add-on performs the write in the SAP backend, optionally attributing each change to the individual user who triggered it.
 
 ## Key Components
 
 
 #### SAP Backend Systems
 
-SAP Data Accelerator supports connectivity to the following SAP backend systems, on-premises and Cloud Private Edition:
+SAP Data Accelerator supports connectivity to the following SAP backend systems, on-premises and SAP S/4HANA Cloud Private Edition:
 
 - SAP S/4HANA
 - SAP ERP / ECC
@@ -64,11 +65,11 @@ SAP Data Accelerator supports connectivity to the following SAP backend systems,
 
 #### SAP Cloud Connector 
 
-The SAP Cloud Connector establishes a secure, outbound-only tunnel from on-premises SAP systems to SAP BTP. It eliminates the need for inbound firewall openings, ensuring that on-premises data can be surfaced to cloud-side services without compromising the network perimeter. 
+The SAP Cloud Connector establishes a secure, outbound-only tunnel from on-premises or SAP S/4HANA Cloud Private Edition systems to SAP Data Accelerator — requiring no inbound firewall openings on the SAP side. Partner software authenticates to SAP Data Accelerator using mTLS and communicates with the SAP ABAP add-on through this tunnel. All data extraction and writeback operations travel over this secured path.
 
-#### SAP ABAP-Add-on 
+#### SAP ABAP-Add-on
 
-Installed on the customer's SAP systems — operates unchanged. Handles data extraction and writeback. 
+Installed on the customer's SAP systems — operates unchanged. Handles data extraction and writeback. For the Palantir integration, this is the Foundry Connector (Palantir Foundry Connector 2.0 for SAP Applications).
 
 #### SAP Data Accelerator 
 
@@ -96,7 +97,7 @@ Any certified or configured partner platform — analytics engines, AI/ML platfo
 - ***Centralized governance:*** SAP administrators retain full control over which data is shared, with whom, and under what conditions.
 - ***Near-real-time delivery:*** Delta replication ensures partner platforms work with fresh SAP data without the latency of nightly batch jobs.
 - ***Bidirectional flow:*** Writeback support closes the loop between external AI/ML outputs and SAP operational systems.
-- ***Minimal on-premises footprint:*** Beyond the SAP Cloud Connector, no additional on-premises infrastructure is required.
+- ***Minimal infrastructure footprint:*** Beyond the SAP Cloud Connector, no additional on-premises or private cloud infrastructure is required.
 - ***Standards-based security:*** Certificate-based authentication and TLS transport align with enterprise security standards. 
  
 
